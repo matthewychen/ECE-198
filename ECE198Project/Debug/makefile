@@ -60,8 +60,8 @@ all: main-build
 main-build: ECE198Project.elf secondary-outputs
 
 # Tool invocations
-ECE198Project.elf ECE198Project.map: $(OBJS) $(USER_OBJS) C:\Users\matth\STM32CubeIDE\workspace_1.16.1\ECE198Project\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ECE198Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\matth\STM32CubeIDE\workspace_1.16.1\ECE198Project\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ECE198Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ECE198Project.elf ECE198Project.map: $(OBJS) $(USER_OBJS) C:\Users\matth\Downloads\STM32-Watering-Project\ECE198Project\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ECE198Project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\matth\Downloads\STM32-Watering-Project\ECE198Project\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ECE198Project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

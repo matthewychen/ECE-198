@@ -116,6 +116,9 @@ int main(void)
 	  if (HAL_SPI_Receive(&hspi2, rx_buff, 1, HAL_MAX_DELAY) == HAL_OK) {
 	          // Successfully received data
 	          HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); // Toggle an LED for indication
+	          HAL_Delay(500);
+	          HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+
 	      }
 
 

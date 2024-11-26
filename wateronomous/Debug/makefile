@@ -60,8 +60,8 @@ all: main-build
 main-build: wateronomous_slave.elf secondary-outputs
 
 # Tool invocations
-wateronomous_slave.elf wateronomous_slave.map: $(OBJS) $(USER_OBJS) C:\Users\Roshan\STM32CubeIDE\workspace_1.16.0\STM32-Watering-Project\wateronomous_slave\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "wateronomous_slave.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Roshan\STM32CubeIDE\workspace_1.16.0\STM32-Watering-Project\wateronomous_slave\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="wateronomous_slave.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+wateronomous_slave.elf wateronomous_slave.map: $(OBJS) $(USER_OBJS) C:\Users\Roshan\STM32CubeIDE\workspace_1.16.0\STM32-Watering-Project\wateronomous\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "wateronomous_slave.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Roshan\STM32CubeIDE\workspace_1.16.0\STM32-Watering-Project\wateronomous\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="wateronomous_slave.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

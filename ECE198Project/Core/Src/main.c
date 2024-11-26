@@ -37,6 +37,13 @@ int main(void)
     // Main loop
     while (1)
     {
+    	uint8_t tx_buffer[1];
+    	tx_buffer[0] = 1;
+
+    	 // Convert integer to byte array
+    	HAL_SPI_Transmit(&hspi1, tx_buffer, sizeof(tx_buffer), HAL_MAX_DELAY);
+    	HAL_Delay(10);
+    	/*
         HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY); // Wait for conversion
         uint32_t adc_value = HAL_ADC_GetValue(&hadc1);    // Get ADC value
 
@@ -71,6 +78,7 @@ int main(void)
 
         }
         HAL_Delay(100); // Delay to avoid flooding the serial monitor
+        */
     }
 }
 

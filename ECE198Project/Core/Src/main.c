@@ -62,10 +62,14 @@ int main(void)
             HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);//moisture no longer needed
         }
 
-        // Send the ADC value and running average over UART
-        snprintf(uart_buffer, sizeof(uart_buffer), "ADC: %lu, Avg: %lu\r\n", adc_value, trueaverage);
-        HAL_UART_Transmit(&huart2, (uint8_t *)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+        if (trueaverage <2800){
+        		uint8_t *tx_buffer;
 
+        	// Convert integer to byte array
+        	HAL_SPI_Transmit(&hspi1, tx_buffer, sizeof(tx_buffer), HAL_MAX_DELAY);
+        	HAL_Delay(1000*120);
+
+        }
         HAL_Delay(100); // Delay to avoid flooding the serial monitor
     }
 }

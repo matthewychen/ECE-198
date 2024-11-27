@@ -113,15 +113,16 @@ int main(void)
   while (1)
   {
 
-	  uint8_t rx_buff[1];
-	  if (HAL_UART_Receive(&huart2, rx_buff, 1, HAL_MAX_DELAY) == HAL_OK) {
-	          // Successfully received data
-	          HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5); // Toggle an LED for indication
-	          HAL_Delay(500);
-	          HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	      }
 
-
+	  uint8_t tx_buff[1] = {0};
+	          // Successfully received )
+	  HAL_UART_Receive(&huart2,tx_buff, 1, HAL_MAX_DELAY);
+	  if (tx_buff[0]){
+		  HAL_Delay(1000);
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Toggle an LED for indication
+		  HAL_Delay(1000);
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

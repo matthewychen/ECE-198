@@ -1,8 +1,8 @@
 ../Core/Src/main.c:71:5:main	16	static
-../Core/Src/main.c:137:6:SystemClock_Config	88	static
-../Core/Src/main.c:184:13:MX_TIM2_Init	64	static
-../Core/Src/main.c:243:13:MX_TIM3_Init	48	static
-../Core/Src/main.c:292:13:MX_USART2_UART_Init	8	static
-../Core/Src/main.c:325:13:MX_GPIO_Init	48	static
-../Core/Src/main.c:359:6:open_water	8	static
-../Core/Src/main.c:388:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/Src/main.c:138:6:SystemClock_Config	88	static
+../Core/Src/main.c:185:13:MX_TIM2_Init	64	static
+../Core/Src/main.c:244:13:MX_TIM3_Init	48	static
+../Core/Src/main.c:293:13:MX_USART2_UART_Init	8	static
+../Core/Src/main.c:326:13:MX_GPIO_Init	48	static
+../Core/Src/main.c:360:6:open_water	8	static
+../Core/Src/main.c:389:6:Error_Handler	4	static,ignoring_inline_asm

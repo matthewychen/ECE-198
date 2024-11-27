@@ -73,7 +73,21 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+    HAL_ADC_Start(&hadc1); // Start the ADC
+    uint32_t runningaverage[50] = {0}; // Initialize running average array
+    uint32_t runningaveragesum = 0;    // Sum for running average
+    uint32_t trueaverage = 0;          // Final calculated average
 
+    // Fill the running average array initially
+    for (uint32_t i = 0; i < 50; i++)
+    {
+        HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY); // Wait for conversion
+        uint32_t adc_value = HAL_ADC_GetValue(&hadc1);    // Get ADC value
+        runningaverage[i] = adc_value;                   // Populate array
+        runningaveragesum += adc_value;                  // Add to sum
+    }
+
+    // Main loop
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -105,6 +119,43 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  /*
+	  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY); // Wait for conversion
+	  	          uint32_t adc_value = HAL_ADC_GetValue(&hadc1);    // Get ADC value
+
+	  	          // Update running average
+	  	          runningaveragesum -= runningaverage[0];           // Subtract oldest value
+	  	          for (uint32_t i = 0; i < 49; i++)
+	  	          {
+	  	              runningaverage[i] = runningaverage[i + 1];    // Shift array left
+	  	          }
+	  	          runningaverage[49] = adc_value;                  // Add new value
+	  	          runningaveragesum += adc_value;                  // Add new value to sum
+
+	  	          // Calculate the true average
+	  	          trueaverage = runningaveragesum / 50;
+
+	  	          // Set GPIO based on average
+	  	          if (trueaverage < 2900)
+	  	          {
+	  	              HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);//adc reading indicates moisture is needed
+	  	          }
+	  	          else
+	  	          {
+	  	              HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);//moisture no longer needed
+	  	          }
+
+	  	          // Send the ADC value and running average over UART
+	  	          snprintf(uart_buffer, sizeof(uart_buffer), "ADC: %lu, Avg: %lu\r\n", adc_value, trueaverage);
+	  	          HAL_UART_Transmit(&huart2, (uint8_t *)uart_buffer, strlen(uart_buffer), HAL_MAX_DELAY);
+
+	  	          HAL_Delay(100); // Delay to avoid flooding the serial monitor
+
+	  	          */
+	  uint8_t tx_buff[1] = {1};
+	  HAL_UART_Transmit(&huart2, tx_buff, 1, HAL_MAX_DELAY);
+	  HAL_Delay(2000);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

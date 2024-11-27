@@ -780,8 +780,8 @@ static void MX_TIM3_Init(void)
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
  8000728:	2360      	movs	r3, #96	@ 0x60
  800072a:	607b      	str	r3, [r7, #4]
-  sConfigOC.Pulse = 50;
- 800072c:	2332      	movs	r3, #50	@ 0x32
+  sConfigOC.Pulse = 70;
+ 800072c:	2346      	movs	r3, #70	@ 0x46
  800072e:	60bb      	str	r3, [r7, #8]
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
  8000730:	2300      	movs	r3, #0
